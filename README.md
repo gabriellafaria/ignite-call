@@ -8,7 +8,7 @@ Para iniciar um projeto com o Next: `npx create-next-app@latest --use-npm`
 
 É usado, também, o design system desenvolvido anteriormente.
 
-_Criando o css global da aplicação_
+<h3>Criando o css global da aplicação</h3>
 Crie uma pasta de styles, dento de pages. <br />
 Adicione o arquivo global, nele, importe o globalCss.
 
@@ -16,11 +16,15 @@ Para adicionar uma nova fonte, busque o import desejado e no `_document`, adicio
 
 Para ativar o server side rendering é necessário adicionar a tag `<style id='stitches' dangerouslySetInnerHTML={{ __html: getCssText }} />  ` em `_document`, `Head`.
 
-_Configurando o ESLint_
+<h3>Configurando o ESLint</h3>
 
 Importa a configuração da rocketseat, `npm i @rocketseat/eslint-config -D` <br />
-Adicione um array de dependencias, com o do next e da rocket.
+Adicione um array de dependencias, com a configuração do next e da rocket.
 
-_PageExtensions_
+<h3>PageExtensions</h3>
 Com o pageExtensions, você consegue determinar quais são as extensões de arquivos que o next deve criar como rotas. <br />
 Adicionamos o pageExtensions em `next.config.js`.
+
+<h3>Intellisense - stiches | css </h3>
+
+O Design System usado não foi desenvolvido com as novas features, então, é nessesário alterar o `"moduleResolution":` para `"node"` no tsconfig.json.
