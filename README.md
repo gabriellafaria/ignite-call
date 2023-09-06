@@ -28,3 +28,27 @@ Adicionamos o pageExtensions em `next.config.js`.
 <h3>Intellisense - stiches | css </h3>
 
 O Design System usado não foi desenvolvido com as novas features, então, é nessesário alterar o `"moduleResolution":` para `"node"` no tsconfig.json.
+
+<h3>React Hook Form - Zod</h3>
+
+A função register é usada para conseguirmos acessar e manipular o(s) campo(s) do form. A função handleSubmit, aceita, como parâmetro, uma função criada anteriormente. 
+
+Conseguimos criar a tipagem das informações do formulário através do zod, criando a sua Schema. É possível adicionar as verificações de formulário nela, assim como a transformação do valor. 
+
+Tranformações de dados podem ser declaradas adicionando o .transform dentro do Schema, por exemplo: `.transform((value) => value.toLocaleLowerCase())`. 
+
+Para exibirmos as validações em tela, usamos o formState, recebendo os erros, `formState: { erros }`
+
+<h4>Regex</h4>
+
+Para criarmos um regex, precisamos adicionar as regras dentro de duas barras: `//`. 
+
+O `^` é para indicar que nosso texto deve começar, o conteudo fica dentro de parênteses e colchetes `/([])/`. Para indicar que pode conter letras, adicionamos `/([a-z])/`, adicionamos duas barras invertidas para apontar que o próximo valor é uma nova parte que queremos permitir, e para aceitar o hifen, declaramos `/([a-z\\-])/`. 
+Quando queremos apontar que os termos podem ser repetidos, asicionamos o + no final, e o dollar é para dizer que o nosso texto precisa começar e terminar com essas regras, e não somente conter, `/([a-z\\-]+)$/`. Conseguimos informar que é case insensitive adicionando um i no final, `/([a-z\\-]+)$/i`.
+
+<h3>Dependências do projeto</h3>
+
+Design System - `npm i @ignite-ui/react` <br />
+Eslint - `npm i @rocketseat/eslint-config -D` <br />
+Phosphor React - `npm phosphor-react` <br />
+React Hook Form, Resolvers e Zod - `npm i react-hook-form @hookform/resolvers zod`
