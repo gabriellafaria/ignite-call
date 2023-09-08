@@ -8,6 +8,8 @@ Para iniciar um projeto com o Next: `npx create-next-app@latest --use-npm`
 
 É usado, também, o design system desenvolvido anteriormente.
 
+---
+
 <h3>Criando o css global da aplicação</h3>
 Crie uma pasta de styles, dento de pages. <br />
 Adicione o arquivo global, nele, importe o globalCss.
@@ -16,14 +18,20 @@ Para adicionar uma nova fonte, busque o import desejado e no `_document`, adicio
 
 Para ativar o server side rendering é necessário adicionar a tag `<style id='stitches' dangerouslySetInnerHTML={{ __html: getCssText }} />  ` em `_document`, `Head`.
 
+---
+
 <h3>Configurando o ESLint</h3>
 
 Importa a configuração da rocketseat, `npm i @rocketseat/eslint-config -D` <br />
 Adicione um array de dependencias, com a configuração do next e da rocket.
 
+---
+
 <h3>PageExtensions</h3>
 Com o pageExtensions, você consegue determinar quais são as extensões de arquivos que o next deve criar como rotas. <br />
 Adicionamos o pageExtensions em `next.config.js`.
+
+---
 
 <h3>Intellisense - stiches | css </h3>
 
@@ -39,12 +47,16 @@ Tranformações de dados podem ser declaradas adicionando o .transform dentro do
 
 Para exibirmos as validações em tela, usamos o formState, recebendo os erros, `formState: { erros }`
 
+---
+
 <h4>Regex</h4>
 
 Para criarmos um regex, precisamos adicionar as regras dentro de duas barras: `//`.
 
 O `^` é para indicar que nosso texto deve começar, o conteudo fica dentro de parênteses e colchetes `/([])/`. Para indicar que pode conter letras, adicionamos `/([a-z])/`, adicionamos duas barras invertidas para apontar que o próximo valor é uma nova parte que queremos permitir, e para aceitar o hifen, declaramos `/([a-z\\-])/`.
 Quando queremos apontar que os termos podem ser repetidos, asicionamos o + no final, e o dollar é para dizer que o nosso texto precisa começar e terminar com essas regras, e não somente conter, `/([a-z\\-]+)$/`. Conseguimos informar que é case insensitive adicionando um i no final, `/([a-z\\-]+)$/i`.
+
+---
 
 <h3>Prisma</h3>
 
@@ -57,16 +69,58 @@ Crie o arquivo prisma.ts, dentro da pasta lib, para configurarmos o setup.
 Comando para rodar o banco em ambiente de desenvolvimento: `npx prisma migrate dev`. <br />
 Para visualizarmos o banco de dados, temos o comando `npx prisma studio`.
 
+---
+
 <h4>Relação dos comandos prima com o banco de dados</h4>
 
 model - são as tabelas ou collections. <br />
 @id - sinaliza que será a primary key <br />
 @default(uuid()) - diz que será preenchido automaticamente com o uuid (id unico universal)
 
+---
+
+<h3>Auth</h3>
+
+Neste caso, a conexão será com o Google, para acesso ao calendário. 
+Para conseguirmos realizar a autenticação social com o google, precisamos criar uma aplicação, para que seja reconhecido. <br />
+Será usado o oAuth, acessando o console da google cloud. 
+
+<h4>Criando um projeto no Google Console</h4>
+
+Após a criação de um projeto, entramos na tela de permissão OAuth. O User Type deve ser o externo. <br />
+O obrigatório é adicionar o nome e dados do desenvolvedor. 
+
+Em domínios autorizados, informamos o dominio que será usado na aplicação em produção - podemos alterar depois. 
+
+Em escopos, conseguimos selecionar quais informarções gostariamos de acessar do usuário. Não é necessário colocar agora, podemos colocar manualmente na nossa aplicação. 
+Não é necessário cadastrar um usuário de teste também. 
+
+Para conseguirmos comecar a usar, é necessário pubicarmos o aplicativo. 
+
+<h4>Crenciais - Id</h4>
+
+Precisamos configurar as credenciais para usarmos na nossa aplicação. Inicie criando credenciais - ID do cliente OAuth. 
+
+O tipo de aplicativo é o Aplicativo da Web. No nome, podemos colocar como Next.js client.
+
+Em JavaScript autorizadas, adicionamos o
+http://localhost:3000.
+
+URIs de redirecionamento autorizados é  onde indicamos qual será a rota do usuário após a autenticação. Como será usado o nextAuth, precisamos adicionar o endereço da aplicação, adicionando `/api/auth/callback/google`, ficando http://localhost:3000/api/auth/callback/google. 
+
+O console retorna com os tokens de acesso, você pode baixar o JSON ou já adicionar no seu .env. 
+
+Por último, precisamos ativar o googleCalandarApi. <br />
+Acesse APIs e serviços, ativar apis e serviço. 
+
+---
+
 <h4>Dicas</h4>
 
 Instale a extenção do prisma. <br />
 Conseguimos adicionar, no User Setting do VSCode, a configuração para formatação automática. `"[prisma]": {"editor.formatOnSave": true}`.
+
+---
 
 <h3>Dependências do projeto</h3>
 
