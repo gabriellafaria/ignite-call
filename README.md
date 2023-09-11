@@ -123,6 +123,10 @@ Em \_app, precisamos adicionar o provider.
 Em connect-calandar, no botão conectar, adicionamos um onClick que chamará o signIn para o Google. <br />
 É necessário criar o secret para usarmos o NextAuth, adicione com o nome de NEXTAUTH_SECRET em .env. Se estiver no linux ou mac, conseguimos criar uma secret com o comando `openssl rand -base64 32`.
 
+Para conseguirmos salvar as informações, conseguimos o adapter no site do NextAuth, mas também podemos criar um adpter próprio, o que nos permite alterar algumas informações, pois não conseguimos alterar o adpter do NextAuth. <br />
+
+Neste caso, será criado o adapter. Com base no schema do NextAuth, adaptamos o schema, com os nomes e campos desejados. 
+
 ---
 
 <h4>Dicas</h4>
