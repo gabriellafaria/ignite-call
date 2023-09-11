@@ -81,37 +81,47 @@ model - são as tabelas ou collections. <br />
 
 <h3>Auth</h3>
 
-Neste caso, a conexão será com o Google, para acesso ao calendário. 
+Neste caso, a conexão será com o Google, para acesso ao calendário.
 Para conseguirmos realizar a autenticação social com o google, precisamos criar uma aplicação, para que seja reconhecido. <br />
-Será usado o oAuth, acessando o console da google cloud. 
+Será usado o oAuth, acessando o console da google cloud.
 
 <h4>Criando um projeto no Google Console</h4>
 
 Após a criação de um projeto, entramos na tela de permissão OAuth. O User Type deve ser o externo. <br />
-O obrigatório é adicionar o nome e dados do desenvolvedor. 
+O obrigatório é adicionar o nome e dados do desenvolvedor.
 
-Em domínios autorizados, informamos o dominio que será usado na aplicação em produção - podemos alterar depois. 
+Em domínios autorizados, informamos o dominio que será usado na aplicação em produção - podemos alterar depois.
 
-Em escopos, conseguimos selecionar quais informarções gostariamos de acessar do usuário. Não é necessário colocar agora, podemos colocar manualmente na nossa aplicação. 
-Não é necessário cadastrar um usuário de teste também. 
+Em escopos, conseguimos selecionar quais informarções gostariamos de acessar do usuário. Não é necessário colocar agora, podemos colocar manualmente na nossa aplicação.
+Não é necessário cadastrar um usuário de teste também.
 
-Para conseguirmos comecar a usar, é necessário pubicarmos o aplicativo. 
+Para conseguirmos comecar a usar, é necessário pubicarmos o aplicativo.
 
 <h4>Crenciais - Id</h4>
 
-Precisamos configurar as credenciais para usarmos na nossa aplicação. Inicie criando credenciais - ID do cliente OAuth. 
+Precisamos configurar as credenciais para usarmos na nossa aplicação. Inicie criando credenciais - ID do cliente OAuth.
 
 O tipo de aplicativo é o Aplicativo da Web. No nome, podemos colocar como Next.js client.
 
 Em JavaScript autorizadas, adicionamos o
 http://localhost:3000.
 
-URIs de redirecionamento autorizados é  onde indicamos qual será a rota do usuário após a autenticação. Como será usado o nextAuth, precisamos adicionar o endereço da aplicação, adicionando `/api/auth/callback/google`, ficando http://localhost:3000/api/auth/callback/google. 
+URIs de redirecionamento autorizados é onde indicamos qual será a rota do usuário após a autenticação. Como será usado o nextAuth, precisamos adicionar o endereço da aplicação, adicionando `/api/auth/callback/google`, ficando http://localhost:3000/api/auth/callback/google.
 
-O console retorna com os tokens de acesso, você pode baixar o JSON ou já adicionar no seu .env. 
+O console retorna com os tokens de acesso, você pode baixar o JSON ou já adicionar no seu .env.
 
 Por último, precisamos ativar o googleCalandarApi. <br />
-Acesse APIs e serviços, ativar apis e serviço. 
+Acesse APIs e serviços, ativar apis e serviço.
+
+---
+
+<h3>Next Auth</h3>
+
+Inicie criando a pasta e arquivo para a configuração do auth em api/auth/[...nextauth].api.ts. - É necessário adicionar o .api. pois definimos que as rotas de api tem o .api e as de páginas tem o .pages.<br />
+Em \_app, precisamos adicionar o provider.
+
+Em connect-calandar, no botão conectar, adicionamos um onClick que chamará o signIn para o Google. <br />
+É necessário criar o secret para usarmos o NextAuth, adicione com o nome de NEXTAUTH_SECRET em .env. Se estiver no linux ou mac, conseguimos criar uma secret com o comando `openssl rand -base64 32`.
 
 ---
 
@@ -133,3 +143,4 @@ Prisma para acesso ao banco - `npm i @prisma/client` <br />
 Axios - `npm i axios` <br />
 Nookies - `npm i nookies` <br />
 Typagem para intelissence do nookies - `npm i @types/cookie -D` <br />
+Next Auth - `npm i next-auth` <br />
