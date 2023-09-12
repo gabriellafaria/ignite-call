@@ -125,7 +125,12 @@ Em connect-calandar, no botão conectar, adicionamos um onClick que chamará o s
 
 Para conseguirmos salvar as informações, conseguimos o adapter no site do NextAuth, mas também podemos criar um adpter próprio, o que nos permite alterar algumas informações, pois não conseguimos alterar o adpter do NextAuth. <br />
 
-Neste caso, será criado o adapter. Com base no schema do NextAuth, adaptamos o schema, com os nomes e campos desejados. 
+Neste caso, será criado o adapter. Com base no schema do NextAuth, do prisma, adaptamos o schema, com os nomes e campos desejados para a criação das nossas models.<br />
+Como foram criados os atributos, é necessário criar a pasta `@types` e então o arquivo `next-auth.d.ts`. <br/>
+Dentro de lib, adicionamos a pastinha `auth` e então o arquivo `prisma-adpter`. Podemos usar o modelo dado pelo NextAuth, alterando o necessário. <br />
+Em `[...nextauth].api.ts` passamos a propriedade adpter, e chamamos a função do PrismaAdapter, importado da pasta criada.
+
+No método `updateUser`, precisamos criar uma const `prismaUser` pois o Auth localiza o user do parâmetro como partiaal, o que não é o caso. Para evitar os erros, é criada a const, pois o user nunca será criado sem o id, por exemplo.
 
 ---
 
