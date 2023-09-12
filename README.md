@@ -132,6 +132,13 @@ Em `[...nextauth].api.ts` passamos a propriedade adpter, e chamamos a função d
 
 No método `updateUser`, precisamos criar uma const `prismaUser` pois o Auth localiza o user do parâmetro como partiaal, o que não é o caso. Para evitar os erros, é criada a const, pois o user nunca será criado sem o id, por exemplo.
 
+<h4>Cookies</h4>
+
+Para a função de criar o usuário, na verdade, será somente buscar os dados nos cookies da aplicação, pois o usuário já realizou o cadastro quando precisamos do login social. <br />
+Deste modo, primeiro é necessário alterar a forma de export do auth, para habilitar os acessos ao req e res, que nos garante o acesso aos cookies. O objeto que tinhamos como authOptions passa a ser uma função. 
+
+O Google não retorna o avatar com o mesmo nome que foi cadastrado no nosso schema, desta forma, precisamos adicionar, no `GoogleProvider` - em `[...nextauth].api.ts`, o método profile. 
+
 ---
 
 <h4>Dicas</h4>
