@@ -3,7 +3,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html>
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -17,7 +17,10 @@ export default function Document() {
           rel="stylesheet"
         />
 
-        <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText }} />
+        <style
+          id="stitches"
+          dangerouslySetInnerHTML={{ __html: getCssText() }}
+        />
       </Head>
       <body>
         <Main />
