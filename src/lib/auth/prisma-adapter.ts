@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { Adapter } from 'next-auth/adapters'
-import { prisma } from '../prisma'
-import { parseCookies, destroyCookie } from 'nookies'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { Adapter } from 'next-auth/adapters'
+import { parseCookies, destroyCookie } from 'nookies'
+import { prisma } from '../prisma'
 
 export function PrismaAdapter(
   req: NextApiRequest,
@@ -14,7 +12,7 @@ export function PrismaAdapter(
       const { '@ignitecall:userId': userIdOnCookies } = parseCookies({ req })
 
       if (!userIdOnCookies) {
-        throw new Error('User Id not found on cookies.')
+        throw new Error('User ID not found on cookies.')
       }
 
       const prismaUser = await prisma.user.update({
@@ -49,7 +47,9 @@ export function PrismaAdapter(
         },
       })
 
-      if (!user) return null
+      if (!user) {
+        return null
+      }
 
       return {
         id: user.id,
@@ -60,7 +60,6 @@ export function PrismaAdapter(
         avatar_url: user.avatar_url!,
       }
     },
-
     async getUserByEmail(email) {
       const user = await prisma.user.findUnique({
         where: {
@@ -68,7 +67,9 @@ export function PrismaAdapter(
         },
       })
 
-      if (!user) return null
+      if (!user) {
+        return null
+      }
 
       return {
         id: user.id,
@@ -92,7 +93,9 @@ export function PrismaAdapter(
         },
       })
 
-      if (!account) return null
+      if (!account) {
+        return null
+      }
 
       const { user } = account
 
@@ -109,7 +112,7 @@ export function PrismaAdapter(
     async updateUser(user) {
       const prismaUser = await prisma.user.update({
         where: {
-          id: user.id,
+          id: user.id!,
         },
         data: {
           name: user.name,
@@ -172,7 +175,9 @@ export function PrismaAdapter(
         },
       })
 
-      if (!prismaSession) return null
+      if (!prismaSession) {
+        return null
+      }
 
       const { user, ...session } = prismaSession
 
