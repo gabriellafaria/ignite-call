@@ -34,7 +34,8 @@ model Account {
   scope               String?
   id_token            String?
   session_state       String?
-  user                User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@unique([provider, provider_account_id])
   @@map("accounts")
