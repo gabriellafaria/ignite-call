@@ -5,12 +5,18 @@ import { AuthError, ConnectBox, ConnectItem } from './styles'
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 
-export default function ConnetCalendar() {
+export default function ConnectCalendar() {
   const session = useSession()
   const router = useRouter()
 
   const hasAuthError = !!router.query.error
-  const isSignedIn = session.status === 'authenticated'
+  const isSignedId = session.status === 'authenticated'
+
+  async function handleConnectCalendar() {
+    await signIn('google')
+  }
+
+  console.log(session)
 
   return (
     <Container>
@@ -26,7 +32,7 @@ export default function ConnetCalendar() {
       <ConnectBox>
         <ConnectItem>
           <Text>Google Calendar</Text>
-          {isSignedIn ? (
+          {isSignedId ? (
             <Button size="sm" disabled>
               Conectado
               <Check />
@@ -35,7 +41,7 @@ export default function ConnetCalendar() {
             <Button
               variant="secondary"
               size="sm"
-              onClick={() => signIn('google')}
+              onClick={handleConnectCalendar}
             >
               Conectar
               <ArrowRight />
@@ -50,7 +56,7 @@ export default function ConnetCalendar() {
           </AuthError>
         )}
 
-        <Button type="submit" disabled={!isSignedIn}>
+        <Button type="submit" disabled={!isSignedId}>
           Próximo passo
           <ArrowRight />
         </Button>
