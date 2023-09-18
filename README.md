@@ -132,12 +132,14 @@ Em `[...nextauth].api.ts` passamos a propriedade adpter, e chamamos a função d
 
 No método `updateUser`, precisamos criar uma const `prismaUser` pois o Auth localiza o user do parâmetro como partiaal, o que não é o caso. Para evitar os erros, é criada a const, pois o user nunca será criado sem o id, por exemplo.
 
+Foi adicionado o User na session, mas na typagem não é reconhecido. Para contornar a situação, é necessário criar uma interface no arquivo `next-auth.d.ts`.
+
 <h4>Cookies</h4>
 
 Para a função de criar o usuário, na verdade, será somente buscar os dados nos cookies da aplicação, pois o usuário já realizou o cadastro quando precisamos do login social. <br />
-Deste modo, primeiro é necessário alterar a forma de export do auth, para habilitar os acessos ao req e res, que nos garante o acesso aos cookies. O objeto que tinhamos como authOptions passa a ser uma função. 
+Deste modo, primeiro é necessário alterar a forma de export do auth, para habilitar os acessos ao req e res, que nos garante o acesso aos cookies. O objeto que tinhamos como authOptions passa a ser uma função.
 
-O Google não retorna o avatar com o mesmo nome que foi cadastrado no nosso schema, desta forma, precisamos adicionar, no `GoogleProvider` - em `[...nextauth].api.ts`, o método profile. 
+O Google não retorna o avatar com o mesmo nome que foi cadastrado no nosso schema, desta forma, precisamos adicionar, no `GoogleProvider` - em `[...nextauth].api.ts`, o método profile.
 
 ---
 
@@ -145,6 +147,11 @@ O Google não retorna o avatar com o mesmo nome que foi cadastrado no nosso sche
 
 Instale a extenção do prisma. <br />
 Conseguimos adicionar, no User Setting do VSCode, a configuração para formatação automática. `"[prisma]": {"editor.formatOnSave": true}`.
+
+O uso do `parse` na api time-intervals dispara erro caso os dados não venha conforme esperado. Para habilitar a tratativas dos dados após, é necessário usar `safeParse`.
+
+Como está sendo utilizado o SQLite, não conseguimos usar a função do prisma chamada `createMany`. <br />
+Para usar um outro banco de dados, exclua as migrations e em .env adicione a url do banco de dados.
 
 ---
 
