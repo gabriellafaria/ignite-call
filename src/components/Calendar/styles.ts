@@ -16,6 +16,7 @@ export const CalandarHeader = styled('div', {
 
 export const CalandarTitle = styled('div', {
   fontWeight: '$medium',
+  textTransform: 'capitalize',
 
   span: {
     color: '$gray200',
