@@ -167,3 +167,4 @@ Axios - `npm i axios` <br />
 Nookies - `npm i nookies` <br />
 Typagem para intelissence do nookies - `npm i @types/cookie -D` <br />
 Next Auth - `npm i next-auth` <br />
+Dayjs - `npm i dayjs` <br />
