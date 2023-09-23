@@ -105,8 +105,6 @@ export function Calendar({ selectedDate, onDateSelected }: CalandarProps) {
     return calandarWeeks
   }, [currentDate])
 
-  console.log(calendarWeeks)
-
   return (
     <CalandarContainer>
       <CalandarHeader>
