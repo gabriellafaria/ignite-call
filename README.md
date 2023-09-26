@@ -69,6 +69,13 @@ Crie o arquivo prisma.ts, dentro da pasta lib, para configurarmos o setup.
 Comando para rodar o banco em ambiente de desenvolvimento: `npx prisma migrate dev`. <br />
 Para visualizarmos o banco de dados, temos o comando `npx prisma studio`.
 
+<h4>Trocando para o MYSQL</h4>
+
+No .env, trocamos a url de conexão para `mysql://root:{senhaDoSeuBanco}@localhost:3306/{nomeDoSeuBanco}`, por exemplo: `mysql://root:senha@localhost:3306/ignitecall`. <br />
+Delete o arquivo dev.db e a pasta migrations. <br />
+No schema, altere o provider para `mysql` <br />
+Rode a aplicação novamente. 
+
 ---
 
 <h4>Relação dos comandos prima com o banco de dados</h4>
