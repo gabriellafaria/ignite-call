@@ -148,6 +148,14 @@ Deste modo, primeiro é necessário alterar a forma de export do auth, para habi
 
 O Google não retorna o avatar com o mesmo nome que foi cadastrado no nosso schema, desta forma, precisamos adicionar, no `GoogleProvider` - em `[...nextauth].api.ts`, o método profile.
 
+<h4>Refresh Token</h4>
+
+A google permite o envio do token apenas uma vez, para conseguirmos forçar o refresh token, adicionamos mais parametros no `[...nextauth].api.ts`. Mais informações em: https://next-auth.js.org/providers/google. 
+
+Instalamos a dependência do googleapis. <br />
+Crie o arquivo do google em lib, para atualizar as informações todas as vezes que batemos na api do google. 
+
+
 ---
 
 <h4>Dicas</h4>
@@ -176,3 +184,4 @@ Typagem para intelissence do nookies - `npm i @types/cookie -D` <br />
 Next Auth - `npm i next-auth` <br />
 Dayjs - `npm i dayjs` <br />
 Tanstack React Query - `npm i @tanstack/react-query` <br />
+Google APIs - `npm i googleapis` <br />
