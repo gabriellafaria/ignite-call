@@ -185,3 +185,4 @@ Next Auth - `npm i next-auth` <br />
 Dayjs - `npm i dayjs` <br />
 Tanstack React Query - `npm i @tanstack/react-query` <br />
 Google APIs - `npm i googleapis` <br />
+NextSeo - `npm i next-seo` <br />
